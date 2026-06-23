@@ -1,8 +1,13 @@
 {
-  "name": "vite-project",
-  "private": true,
-  "version": "0.0.0",
+  "name": "slop-cop-lsp",
+  "version": "0.1.0",
   "type": "module",
+  "bin": {
+    "slop-cop-lsp": "lsp/dist/server.js"
+  },
+  "files": [
+    "lsp/dist/server.js"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,7 +17,8 @@
     "test:llm": "vitest run --reporter=verbose --config vitest.llm.config.ts",
     "seed": "npx tsx scripts/seed-sample-violations.ts",
     "deploy": "pnpm build && npx wrangler pages deploy dist --project-name slopcop",
-    "deploy:router": "cd router && npx wrangler deploy"
+    "deploy:router": "cd router && npx wrangler deploy",
+    "lsp:build": "esbuild lsp/server.ts --bundle --platform=node --format=esm --outfile=lsp/dist/server.js --alias:compromise-verbs-plugin=./node_modules/compromise/src/3-three/verbs/plugin.js --alias:compromise-adjectives-plugin=./node_modules/compromise/src/3-three/adjectives/plugin.js \"--banner:js=#!/usr/bin/env node\nimport { createRequire } from 'module'; const require = createRequire(import.meta.url);\" && chmod +x lsp/dist/server.js"
   },
   "devDependencies": {
     "@types/diff": "^8.0.0",
@@ -31,6 +37,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "retext": "^9.0.0",
-    "retext-indefinite-article": "^5.0.0"
+    "retext-indefinite-article": "^5.0.0",
+    "vscode-languageserver": "^10.0.0",
+    "vscode-languageserver-textdocument": "^1.0.12"
   }
 }
