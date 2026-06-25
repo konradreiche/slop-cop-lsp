@@ -832,6 +832,18 @@ export function detectDespiteChallenges(text: string): Violation[] {
   return findAll(text, re, 'despite-challenges')
 }
 
+export function detectPrivilegedInsight(text: string): Violation[] {
+  const patterns = [
+    /\bthe (real|actual|true|deeper|bigger|real) (story|point|issue|problem|question|answer|reason) (is|isn['']t|was|isn['']t)\b/gi,
+    /\bthe truth is (simple|clear|straightforward|plain|obvious)\b/gi,
+    /\bthe reality is (simpler|clearer|more straightforward|more obvious|plain)\b/gi,
+    /\bhistory is (unambiguous|clear|unmistakable|unequivocal) (on|about)\b/gi,
+    /\b(the metrics?|the evidence|the data|the record|the science) (is|are) (clear|unambiguous|unequivocal|unmistakable)\b/gi,
+    /\bnone of (them|this|these|that|it|which) (is|are|tells?) the (real|full|whole|actual|true)\b/gi,
+  ]
+  return patterns.flatMap(re => findAll(text, re, 'privileged-insight'))
+}
+
 export function detectConceptLabel(text: string): Violation[] {
   const re = /\b[a-z]+\s+(paradox|trap|creep|vacuum|inversion|chasm)\b/gi
   return findAll(text, re, 'concept-label')

@@ -640,6 +640,18 @@ export const RULES: ViolationRule[] = [
     llmDirective: "Do not use performative honesty phrases ('I\\'ll be honest', 'Let\\'s be real', 'And yes, since we\\'re being honest') — real vulnerability is specific.",
   },
 
+  {
+    id: 'privileged-insight',
+    name: 'Privileged Insight',
+    category: 'framing',
+    description: 'Asserting that the real truth is obvious or that the reader is missing the actual point — without proving it.',
+    tip: 'If the truth were obvious, you wouldn\'t need to say so. Make the argument instead of announcing it.',
+    canRemove: false,
+    color: '#f59e0b',
+    bgColor: 'rgba(245,158,11,0.15)',
+    requiresLLM: false,
+  },
+
   // ── Document-level (Sonnet) ───────────────────────────────────────────────
   {
     id: 'dead-metaphor',
