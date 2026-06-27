@@ -872,6 +872,26 @@ export function detectDramaticFragment(text: string): Violation[] {
   return violations
 }
 
+export function detectUnnecessaryQuotes(text: string): Violation[] {
+  const violations: Violation[] = []
+  // Match short quoted phrases that don't contain sentence-ending punctuation.
+  // Handles both straight quotes and curly/smart quotes from contenteditable.
+  const re = /["“]([^"“”.!?\n]{1,50})["”]/g
+  let m: RegExpExecArray | null
+  while ((m = re.exec(text)) !== null) {
+    const before = text.slice(0, m.index).trimEnd()
+    // Skip sentence-initial and paragraph-initial quotes
+    if (!before || /[.!?\n]$/.test(before)) continue
+    violations.push({
+      ruleId: 'unnecessary-quotes',
+      startIndex: m.index,
+      endIndex: m.index + m[0].length,
+      matchedText: m[0],
+    })
+  }
+  return violations
+}
+
 export function detectSuperficialAnalysis(text: string): Violation[] {
   const re = /,\s+(highlighting|underscoring|showcasing|reflecting|cementing|embodying|encapsulating)\s+(its|the|their|this)\s+(importance|role|significance|legacy|power|spirit|nature|value)\b/gi
   return findAll(text, re, 'superficial-analysis')

@@ -641,6 +641,17 @@ export const RULES: ViolationRule[] = [
   },
 
   {
+    id: 'unnecessary-quotes',
+    name: 'Unnecessary Quotes',
+    category: 'word-choice',
+    description: 'Quotation marks used for emphasis rather than to mark speech, irony, or a coined term.',
+    tip: 'Use italics for emphasis. Reserve quotes for speech, irony, or introducing someone else\'s term.',
+    canRemove: false,
+    color: '#06b6d4',
+    bgColor: 'rgba(6,182,212,0.15)',
+    requiresLLM: false,
+  },
+  {
     id: 'privileged-insight',
     name: 'Privileged Insight',
     category: 'framing',
