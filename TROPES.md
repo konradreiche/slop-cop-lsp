@@ -254,6 +254,10 @@ Use of unicode arrows (->), smart/curly quotes, and other special characters tha
 - "This leads to better outcomes → which means higher engagement"
 - "“Smart quotes” instead of straight "quotes" that you’d actually type"
 
+### "Unnecessary" Quotes
+
+Wrapping a word in quotation marks for emphasis, the way you would reach for bold or italics. This is distinct from a real scare quote (irony, skepticism, naming someone else's term)
+
 ---
 
 ## Composition
