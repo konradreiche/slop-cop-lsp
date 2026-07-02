@@ -68,6 +68,20 @@ export const RULES: ViolationRule[] = [
     llmDirective: "Do not open with era-framing clauses ('In an era of...', 'In a world where...') — start at the real point.",
   },
 
+  {
+    id: 'operational-jargon',
+    name: 'Operational Jargon',
+    category: 'word-choice',
+    description: 'Terms borrowed from engineering used as analytical-sounding shorthand: "pressure test," "failure mode."',
+    tip: 'Replace with what you actually mean. "Pressure test" → "test." "Failure mode" → "way it could fail." Jargon signals borrowed authority rather than an actual argument.',
+    canRemove: false,
+    color: '#9333ea',
+    bgColor: 'rgba(147,51,234,0.15)',
+    requiresLLM: false,
+    rewriteHint: 'Replace with plain language: "pressure test" → "test", "failure mode" → "way it could fail".',
+    llmDirective: 'Replace engineering jargon with plain language: "pressure test" → "test", "failure mode" → "way it could fail".',
+  },
+
   // ── Framing ──────────────────────────────────────────────────────────────
   {
     id: 'metaphor-crutch',

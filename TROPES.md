@@ -24,6 +24,14 @@ Used to be the most infamous AI tell. _Delve_ went from an uncommon English word
 - "Delving deeper into this topic..."
 - "We certainly need to leverage these robust frameworks..."
 
+### Operational Jargon
+
+Terms borrowed from engineering and repurposed as analytical-sounding shorthand. AI reaches for these to signal rigor or technical credibility without making a specific claim.
+
+**Avoid patterns like:**
+- "Let's pressure-test this assumption."
+- "What are the failure modes here?"
+
 ### Tapestry and Landscape
 
 Overuse of ornate or grandiose nouns where simpler words would do. _Tapestry_ is used to describe anything interconnected. _Landscape_ is used to describe any field or domain. Other offenders: _paradigm_, _synergy_, _ecosystem_, _framework_.

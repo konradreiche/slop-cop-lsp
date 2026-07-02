@@ -897,6 +897,14 @@ export function detectSuperficialAnalysis(text: string): Violation[] {
   return findAll(text, re, 'superficial-analysis')
 }
 
+export function detectOperationalJargon(text: string): Violation[] {
+  const patterns = [
+    /\bpressure[- ]test(?:ed|ing|s)?\b/gi,
+    /\bfailure modes?\b/gi,
+  ]
+  return patterns.flatMap(re => findAll(text, re, 'operational-jargon'))
+}
+
 export function detectFalseRange(text: string): Violation[] {
   const violations: Violation[] = []
 
