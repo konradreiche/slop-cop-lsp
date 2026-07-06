@@ -655,6 +655,20 @@ export const RULES: ViolationRule[] = [
   },
 
   {
+    id: 'pseudo-rigor',
+    name: 'Pseudo-Rigor',
+    category: 'framing',
+    description: 'Performing the appearance of evaluation without naming any standard: "defensible," "hard to argue with," "stands up to scrutiny."',
+    tip: 'Name the actual standard. If it\'s "defensible," defensible against what objection? Show the test, don\'t signal it.',
+    canRemove: false,
+    color: '#0f766e',
+    bgColor: 'rgba(15,118,110,0.15)',
+    requiresLLM: false,
+    rewriteHint: 'Replace "defensible/hard to argue with/stands up to scrutiny" with the actual reason the choice holds — name the objection it answers.',
+    llmDirective: 'Do not signal rigor with words like "defensible" or "hard to argue with" — name the actual standard or objection the argument answers.',
+  },
+
+  {
     id: 'unnecessary-quotes',
     name: 'Unnecessary Quotes',
     category: 'word-choice',

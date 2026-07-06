@@ -177,6 +177,13 @@ The classic AI invitation to futurism. To sell the argument usually begins with 
 - "Imagine a world where every tool you use -- your calendar, your inbox, your documents, your CRM, your code editor -- has a quiet intelligence behind it..."
 - "In that world, workflows stop being collections of manual steps and start becoming orchestrations."
 
+### Pseudo-Rigor
+
+Performing the appearance of having weighed an argument carefully without naming any standard it was weighed against. _Defensible_ implies the writer applied some test — but no test is ever specified. It is rigor signaled, not rigor done.
+
+**Avoid patterns like:**
+- "...becomes much more defensible."
+
 ### False Vulnerability
 
 Simulated self-awareness or honesty that reads as performative. The model pretends to break the fourth wall or admit a bias, creating a false sense of authenticity. Real vulnerability is specific and uncomfortable; AI vulnerability is polished and risk-free!!!!

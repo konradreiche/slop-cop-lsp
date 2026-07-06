@@ -897,6 +897,10 @@ export function detectSuperficialAnalysis(text: string): Violation[] {
   return findAll(text, re, 'superficial-analysis')
 }
 
+export function detectPseudoRigor(text: string): Violation[] {
+  return findAll(text, /\bdefensible\b/gi, 'pseudo-rigor')
+}
+
 export function detectOperationalJargon(text: string): Violation[] {
   const patterns = [
     /\bpressure[- ]test(?:ed|ing|s)?\b/gi,
