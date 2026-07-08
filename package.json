@@ -14,9 +14,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:llm": "vitest run --reporter=verbose --config vitest.llm.config.ts",
-    "seed": "npx tsx scripts/seed-sample-violations.ts",
-    "deploy": "pnpm build && npx wrangler pages deploy dist --project-name slopcop",
+"deploy": "pnpm build && npx wrangler pages deploy dist --project-name slopcop",
     "deploy:router": "cd router && npx wrangler deploy",
     "lsp:build": "esbuild lsp/server.ts --bundle --platform=node --format=esm --outfile=lsp/dist/server.js --alias:compromise-verbs-plugin=./node_modules/compromise/src/3-three/verbs/plugin.js --alias:compromise-adjectives-plugin=./node_modules/compromise/src/3-three/adjectives/plugin.js \"--banner:js=#!/usr/bin/env node\nimport { createRequire } from 'module'; const require = createRequire(import.meta.url);\" && chmod +x lsp/dist/server.js"
   },

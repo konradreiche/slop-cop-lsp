@@ -840,6 +840,7 @@ export function detectPrivilegedInsight(text: string): Violation[] {
     /\bhistory is (unambiguous|clear|unmistakable|unequivocal) (on|about)\b/gi,
     /\b(the metrics?|the evidence|the data|the record|the science) (is|are) (clear|unambiguous|unequivocal|unmistakable)\b/gi,
     /\bnone of (them|this|these|that|it|which) (is|are|tells?) the (real|full|whole|actual|true)\b/gi,
+    /\bthe real \w+/gi,
   ]
   return patterns.flatMap(re => findAll(text, re, 'privileged-insight'))
 }

@@ -14,11 +14,8 @@ export interface ViolationRule {
   canRemove: boolean   // whether "Remove" deletes the matched text
   color: string        // CSS hsl or hex
   bgColor: string      // highlight background
-  requiresLLM: boolean
-  llmTier?: 'sentence' | 'document'   // which LLM call detects this rule
-  llmDetectionHint?: string           // detection description used in LLM analysis prompts
-  rewriteHint?: string                // human-readable description shown in rewrite debug panel
-  llmDirective?: string               // terse imperative sent to the model in rewrite prompts
+  rewriteHint?: string
+  llmDirective?: string
 }
 
 export interface Violation {
@@ -29,8 +26,6 @@ export interface Violation {
   explanation?: string
   suggestedChange?: string | null  // null = explicitly no action (don't fall back to canRemove deletion)
   // When present, Apply uses this range + applyReplacement instead of the highlight span.
-  // Allows highlighting just the problematic text while acting on a wider context
-  // (e.g. highlight "For instance," but also remove the boundary and capitalize next word).
   applyStartIndex?: number
   applyEndIndex?: number
   applyReplacement?: string

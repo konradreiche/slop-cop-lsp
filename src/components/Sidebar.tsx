@@ -7,8 +7,6 @@ interface Props {
   onToggleRule: (ruleId: string) => void
   onRuleHover: (ruleId: string | null) => void
   wordCount: number
-  hasApiKey: boolean
-  llmStatus: 'idle' | 'loading' | 'done' | 'stale' | 'error'
 }
 
 const CATEGORY_LABELS: Record<ViolationCategory, string> = {
@@ -23,7 +21,7 @@ const CATEGORY_ORDER: ViolationCategory[] = [
   'sentence-structure', 'word-choice', 'rhetorical', 'framing', 'structural',
 ]
 
-export default function Sidebar({ violations, hiddenRules, onToggleRule, onRuleHover, wordCount, hasApiKey, llmStatus }: Props) {
+export default function Sidebar({ violations, hiddenRules, onToggleRule, onRuleHover, wordCount }: Props) {
   const countByRule = new Map<string, number>()
   for (const v of violations) {
     countByRule.set(v.ruleId, (countByRule.get(v.ruleId) ?? 0) + 1)
@@ -31,11 +29,9 @@ export default function Sidebar({ violations, hiddenRules, onToggleRule, onRuleH
 
   const totalHits = violations.filter(v => !hiddenRules.has(v.ruleId)).length
 
-  // Group rules by category, only show rules with hits (or LLM rules if unlocked)
   const byCategory = new Map<ViolationCategory, typeof RULES>()
   for (const rule of RULES) {
     const count = countByRule.get(rule.id) ?? 0
-    if (rule.requiresLLM && !hasApiKey && count === 0) continue
     if (count === 0) continue
     if (!byCategory.has(rule.category)) byCategory.set(rule.category, [])
     byCategory.get(rule.category)!.push(rule)
@@ -171,33 +167,6 @@ export default function Sidebar({ violations, hiddenRules, onToggleRule, onRuleH
             fontFamily: 'sans-serif', textAlign: 'center', lineHeight: '1.6',
           }}>
             Paste text to detect LLM prose patterns.
-          </div>
-        )}
-
-        {/* LLM upsell */}
-        {!hasApiKey && violations.length > 0 && (
-          <div style={{
-            marginTop: '8px',
-            padding: '10px 12px',
-            background: '#f8f8f8',
-            border: '1px solid #e8e8e8',
-            borderRadius: '6px',
-            fontSize: '11px',
-            color: '#888',
-            fontFamily: 'sans-serif',
-            lineHeight: '1.5',
-          }}>
-            Add an Anthropic or OpenAI API key, or configure a local model, to unlock semantic pattern detection (Triple Construction, Throat-Clearing, Sycophantic Frame, and more).
-          </div>
-        )}
-
-        {llmStatus === 'loading' && (
-          <div style={{
-            padding: '10px 12px', background: '#f0fdf4',
-            border: '1px solid #bbf7d0', borderRadius: '6px',
-            fontSize: '11px', color: '#16a34a', fontFamily: 'sans-serif',
-          }}>
-            Running semantic analysis…
           </div>
         )}
       </div>
