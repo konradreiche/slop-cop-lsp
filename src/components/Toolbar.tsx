@@ -1,5 +1,3 @@
-import logoUrl from '/logo-sm.png'
-
 export default function Toolbar() {
   return (
     <div style={{
@@ -13,7 +11,7 @@ export default function Toolbar() {
       boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
     }}>
       <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: '700', color: '#1a1a1a' }}>
-        <img src={logoUrl} alt="" style={{ width: '28px', height: '28px' }} />
+        <span style={{ fontSize: '24px', lineHeight: 1 }}>👮</span>
         <span style={{ fontFamily: 'Menlo, Consolas, Monaco, "Adwaita Mono", "Liberation Mono", "Lucida Console", monospace' }}>Slop Cop</span>
       </span>
     </div>
